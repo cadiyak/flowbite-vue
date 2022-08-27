@@ -2,11 +2,18 @@
   <div id="default-carousel" class="relative">
     <!-- Carousel wrapper -->
     <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-      <!-- Item 1 -->
+      <!-- Items -->
+
+<!--      Need help with animation-->
 <!--      duration-700 ease-in-out-->
+
       <div :class="index === currentPicture ? 'z-30' : 'z-0'"
            v-for="(picture, index) in pictures" :key="picture" class="absolute inset-0 -translate-y-0">
-        <img :src="picture.src" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" :alt="picture.alt">
+        <img
+            :src="picture.src"
+            :title="picture.title"
+            :alt="picture.alt"
+            class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
       </div>
     </div>
     <!-- Slider indicators -->
@@ -37,16 +44,19 @@ const props = defineProps({
     default() {
       return [
         {
+          'title': '',
           'src': 'https://flowbite.com/docs/images/carousel/carousel-1.svg',
-          'alt': 'Picture 1',
+          'alt': '',
         },
         {
+          'title': '',
           'src': 'https://flowbite.com/docs/images/carousel/carousel-2.svg',
-          'alt': 'Picture 2',
+          'alt': '',
         },
         {
+          'title': '',
           'src': 'https://flowbite.com/docs/images/carousel/carousel-3.svg',
-          'alt': 'Picture 3',
+          'alt': '',
         },
       ]
     },
@@ -78,9 +88,11 @@ const direction = ref('')
 const interval = ref()
 
 const automaticSlide = () => {
-    interval.value = setInterval(function() {
+  if (props.slide) {
+    interval.value = setInterval(function () {
       nextPicture()
     }, props.slideInterval)
+  }
 }
 
 const resetInterval = () => {
@@ -114,9 +126,7 @@ const previousPicture = () => {
 }
 
 onMounted(() => {
-  if (props.slide) {
     automaticSlide()
-  }
 })
 
 </script>
