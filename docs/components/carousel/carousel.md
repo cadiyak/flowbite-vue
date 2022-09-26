@@ -12,6 +12,8 @@ Use the carousel component to slide through multiple elements and images using c
 
 ## Default slider
 
+<CarouselDefaultExample />
+
 ```vue
 <script setup>
 import { Carousel } from 'flowbite-vue'
@@ -20,8 +22,6 @@ import { Carousel } from 'flowbite-vue'
   <Carousel></Carousel>
 </template>
 ```
-
-<CarouselDefaultExample />
 
 ## Prop - controls
 
@@ -143,7 +143,7 @@ const props = defineProps({
 
 ```vue
 <script setup>
-import { Carousel } from '../../../../src/index'
+import { Carousel } from 'flowbite-vue'
 const pictures = [
   {
     'title': 'Title 1',
