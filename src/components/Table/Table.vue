@@ -8,7 +8,7 @@
 
 import TableHead from './TableHead.vue'
 import TableBody from './TableBody.vue'
-import { ref } from 'vue'
+import {ref} from 'vue'
 
 const props = defineProps({
   data: {
@@ -71,18 +71,30 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  pagination: {
+    type: Object,
+    default() {
+      return {
+        perPage: 1,
+      }
+    },
+  },
 })
 
 const data = ref(props.data)
 const columns = ref(props.columns)
 
+const dataLength = () => {
+  return data.value.length
+}
+
 </script>
 
 <template>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <TableHead :columns="columns"/>
-        <TableBody :data="data" :columns="columns" :striped="striped" :hoverable="hoverable"/>
-      </table>
-    </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <TableHead :columns="columns"/>
+      <TableBody :data="data" :columns="columns" :striped="striped" :hoverable="hoverable"/>
+    </table>
+  </div>
 </template>

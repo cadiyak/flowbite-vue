@@ -38,6 +38,11 @@ const normalColumns = computed(() => {
   })
 })
 
+const paginate = (array, page_size, page_number) => {
+    return array.slice((page_number - 1) * page_size, page_number * page_size)
+}
+paginate(props.data, 1, props.data.length)
+
 const isStriped = (index) => {
   if (props.striped && index%2 === 0) {
     return true
@@ -48,6 +53,10 @@ const isLast = (index) => {
   if (props.data.length - 1 === index) {
     return true
   }
+}
+
+const dataLength = () => {
+  return props.data.value.length
 }
 </script>
 
