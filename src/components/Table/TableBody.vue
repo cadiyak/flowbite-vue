@@ -15,8 +15,8 @@ const props = defineProps({
 })
 
 const columns = ref(props.columns)
-const stripedClass = ref('bg-white dark:bg-gray-900 dark:border-gray-700')
-const NotStripedClass = ref('bg-gray-50 dark:bg-gray-800 dark:border-gray-700')
+const stripedClass = ref('bg-gray-50 dark:bg-gray-900 dark:border-gray-700')
+const NotStripedClass = ref('bg-white dark:bg-gray-800 dark:border-gray-700')
 
 const headerColumns = computed(() => {
   return columns.value.filter((column) => {
